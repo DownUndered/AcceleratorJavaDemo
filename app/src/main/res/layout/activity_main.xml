@@ -10,32 +10,35 @@
         android:id="@+id/xText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="X"
+        android:text="@string/x"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
+        app:layout_constraintBottom_toTopOf="@+id/yText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="163dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/yText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Y"
+        android:text="@string/y"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="243dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/zText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Z"
+        android:text="@string/z"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="318dp" />
+        app:layout_constraintTop_toBottomOf="@+id/yText" />
 </android.support.constraint.ConstraintLayout>
