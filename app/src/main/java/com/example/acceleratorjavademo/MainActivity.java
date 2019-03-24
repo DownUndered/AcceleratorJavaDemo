@@ -1,5 +1,6 @@
 package com.example.acceleratorjavademo;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -16,24 +17,26 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Sensor positionSensor;
     private SensorManager SM;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Create Sensor Manager
+        //Create sensor manager
         SM = (SensorManager)getSystemService(SENSOR_SERVICE);
 
         //Accelerometer sensor
         positionSensor = SM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        //Register Sensor Listener
+        //Register sensor listener
         SM.registerListener(this, positionSensor, SensorManager.SENSOR_DELAY_NORMAL);
 
-        //Assign Text Views
+        //Assign text views
         xText = (TextView)findViewById(R.id.xText);
         yText = (TextView)findViewById(R.id.yText);
         zText = (TextView)findViewById(R.id.zText);
+
     }
 
     @Override
@@ -41,6 +44,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         xText.setText("X: " + event.values[0]);
         yText.setText("Y: " + event.values[1]);
         zText.setText("Z: " + event.values[2]);
+        //Playing with changing text colours depending on values
+        float x = event.values[0];
+        float y = event.values[1];
+        if (x > y) {
+            xText.setTextColor(Color.BLUE);
+        }
+        else {
+            xText.setTextColor(Color.RED);
+        }
     }
 
     @Override
