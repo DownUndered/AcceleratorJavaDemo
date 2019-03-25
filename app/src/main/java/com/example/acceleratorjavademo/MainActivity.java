@@ -10,6 +10,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.widget.TextView;
 
+import android.view.View;
+
 
 
 
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private TextView xText, yText, zText;
     private Sensor positionSensor;
     private SensorManager SM;
+
+    View view;
 
 
 
@@ -40,10 +44,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         yText = (TextView)findViewById(R.id.yText);
         zText = (TextView)findViewById(R.id.zText);
 
-
-
-
-
+        //Assign layout to view
+        view = findViewById(R.id.myLayout);
 
 
     }
@@ -56,29 +58,50 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //Playing with changing text colours depending on values
         float x = event.values[0];
         float y = event.values[1];
-        float z = event.values[1];
+        float z = event.values[2];
+
+        //Changing background colors on event values change
+        if(event.values[1] > 0.5f) { // anticlockwise
+            view.setBackgroundColor(Color.parseColor("#616161"));
+        } else if(event.values[1] < -0.5f) { // clockwise
+            view.setBackgroundColor(Color.parseColor("#006064"));
+        }
+
+        if(event.values[0] > 0.5f) { // anticlockwise
+            view.setBackgroundColor(Color.parseColor("#D84315"));
+        } else if(event.values[0] < -0.5f) { // clockwise
+            view.setBackgroundColor(Color.parseColor("#D1C4E9"));
+        }
 
 
-
+        //Changing text and backgrounds colors
         if ( x >= 0 )   {
             xText.setTextColor(Color.GREEN);
+            //view.setBackgroundColor(Color.parseColor("#616161"));
 
         } else {
             xText.setTextColor(Color.RED);
-
+            //view.setBackgroundColor(Color.parseColor("#006064"));
         }
 
         if ( y >= 0 ) {
             yText.setTextColor(Color.GREEN);
+
         } else {
             yText.setTextColor(Color.RED);
+
         }
 
         if ( z >= 0 ) {
             zText.setTextColor(Color.GREEN);
+            //view.setBackgroundColor(Color.parseColor("#006064"));
         } else {
             zText.setTextColor(Color.RED);
+            //view.setBackgroundColor(Color.parseColor("#616161"));
+
         }
+
+
     }
 
     @Override
