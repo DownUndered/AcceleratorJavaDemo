@@ -11,11 +11,14 @@ import android.hardware.SensorEventListener;
 import android.widget.TextView;
 
 
+
+
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
     private TextView xText, yText, zText;
     private Sensor positionSensor;
     private SensorManager SM;
+
 
 
     @Override
@@ -37,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         yText = (TextView)findViewById(R.id.yText);
         zText = (TextView)findViewById(R.id.zText);
 
+
+
+
+
+
+
     }
 
     @Override
@@ -47,11 +56,28 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //Playing with changing text colours depending on values
         float x = event.values[0];
         float y = event.values[1];
-        if (x > y) {
-            xText.setTextColor(Color.BLUE);
-        }
-        else {
+        float z = event.values[1];
+
+
+
+        if ( x >= 0 )   {
+            xText.setTextColor(Color.GREEN);
+
+        } else {
             xText.setTextColor(Color.RED);
+
+        }
+
+        if ( y >= 0 ) {
+            yText.setTextColor(Color.GREEN);
+        } else {
+            yText.setTextColor(Color.RED);
+        }
+
+        if ( z >= 0 ) {
+            zText.setTextColor(Color.GREEN);
+        } else {
+            zText.setTextColor(Color.RED);
         }
     }
 
