@@ -56,9 +56,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         yText.setText("Y: " + event.values[1]);
         zText.setText("Z: " + event.values[2]);
         //Playing with changing text colours depending on values
-        float x = event.values[0];
-        float y = event.values[1];
-        float z = event.values[2];
+        float x = event.values[0], y = event.values[1], z = event.values[2];
+
 
         //Changing background colors on event values change
         if(event.values[1] > 0.5f) { // anticlockwise
